@@ -6,6 +6,7 @@ let p1Score = document.querySelector("#p1Score");
 let p2Score = document.querySelector("#p2Score");
 let p = document.querySelector('p');
 let numInput = document.querySelector('input');
+let options = document.querySelectorAll('button');
 
 let p1CurrentScore = 0;
 let p2CurrentScore = 0;
@@ -49,3 +50,12 @@ reset.addEventListener("click", function(){
   p1CurrentScore = 0;
   p2CurrentScore = 0;
 })
+
+for(var i = 0; i < options.length; i++){
+  options[i].addEventListener('mousedown', function(){
+    this.style.background = "blue";
+  });
+  options[i].addEventListener('mouseup', function(){
+    this.style.background = "#ECECEC";
+  });
+}
