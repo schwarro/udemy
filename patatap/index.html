@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Space</title>
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="paper-full.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.js"></script>
+    <script type="text/paperscript" canvas="myCanvas">
+
+      var sound = new Howl({
+        src: ['sound/bubbles.mp3']
+      });
+
+
+
+      var circles = [];
+
+      function onKeyDown(e){
+        sound.play();
+        var maxPoint = new Point(view.size.width, view.size.height);
+        var randomPoint = Point.random();
+        var point = maxPoint * randomPoint;
+        var newCircle = new Path.Circle(point, 500);
+        newCircle.fillColor = "orange";
+        circles.push(newCircle);
+      }
+
+      // var animatedCircle = new Path.Circle(new Point(300,300), 100);
+      // animatedCircle.fillColor = "red";
+
+      function onFrame(e){
+        for(var i = 0; i < circles.length; i++){
+          circles[i].fillColor.hue += 1;
+          circles[i].scale(.9);
+        }
+      }
+
+
+
+    </script>
+  </head>
+  <body>
+    <canvas id="myCanvas" resize></canvas>
+  </body>
+</html>
